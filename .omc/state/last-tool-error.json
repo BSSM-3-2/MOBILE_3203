@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"git add . && git reset HEAD components/feed/post/FeedPost.tsx components/feed/post/SwipeableFeedPost.tsx components/feed/FeedList.tsx hooks/useFeedPosts.ts app/\\\\(tabs\\\\)/index.tsx 2>&1\",\"...",
+  "error": "Exit code 128\nfatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.\nUse '--' to separate paths from revisions, like this:\n'git <command> [<revision>...] -- [<file>...]'",
+  "timestamp": "2026-06-04T01:19:00.422Z",
+  "retry_count": 3
+}

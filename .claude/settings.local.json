@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -v \"^components/feed/post/FeedPost.tsx$\")",
+      "Bash(grep -v \"^components/feed/post/SwipeableFeedPost.tsx$\")",
+      "Bash(grep -v \"^components/feed/FeedList.tsx$\")",
+      "Bash(grep -v \"^hooks/useFeedPosts.ts$\")",
+      "Bash(grep -v \"^app/\\(tabs\\)/index.tsx$\")",
+      "Bash(xargs git:*)",
+      "Bash(cp components/feed/post/FeedPost.tsx /tmp/FeedPost_final.tsx)",
+      "Bash(cp components/feed/post/SwipeableFeedPost.tsx /tmp/SwipeableFeedPost_final.tsx)",
+      "Bash(cp components/feed/FeedList.tsx /tmp/FeedList_final.tsx)",
+      "Bash(cp hooks/useFeedPosts.ts /tmp/useFeedPosts_final.ts)",
+      "Bash(cp \"app/\\(tabs\\)/index.tsx\" /tmp/index_final.tsx)"
+    ]
+  }
+}
