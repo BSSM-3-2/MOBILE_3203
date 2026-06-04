@@ -12,7 +12,7 @@ import ContentContainer from '@components/container';
 import { FeedList } from '@components/feed/FeedList';
 import { Ionicons } from '@expo/vector-icons';
 import { ThemedView } from '@components/themed-view';
-import { useFeedStore } from '@/store/feed-store';
+import { useFeedPosts } from '@/hooks/useFeedPosts';
 import { useRouter } from 'expo-router';
 import { Pretendard } from '@/constants/theme';
 import Animated, {
@@ -85,9 +85,7 @@ const feedErrorStyles = StyleSheet.create({
 });
 
 export default function HomeScreen() {
-    // TODO: useFeedStore()를 useFeedPosts() Hook으로 교체하세요 (실습 5)
-    //       import { useFeedPosts } from '@/hooks/useFeedPosts';
-    const { posts, loading, error, fetchFeed, loadMore } = useFeedStore();
+    const { posts, loading, error, fetchFeed, loadMore } = useFeedPosts();
     const router = useRouter();
 
     // scrollY: 스크롤 위치를 UI 스레드에서 직접 추적하는 SharedValue
