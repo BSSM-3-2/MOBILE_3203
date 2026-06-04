@@ -1,3 +1,4 @@
+import React, { useCallback } from 'react';
 import { StyleSheet } from 'react-native';
 import { Post } from '@type/Post';
 import ContentContainer from '@components/container';
@@ -9,21 +10,19 @@ import FeedImage from '@components/feed/post/FeedImage';
 import { resolveImageSource } from '@/utils/image';
 import { useFeedStore } from '@/store/feed-store';
 
-function FeedPost({ post }: { post: Post }) {
+export const FeedPost = React.memo(function FeedPost({ post }: { post: Post }) {
     console.log('FeedPost render:', post.id);
 
     const user = post.author;
 
-    const { posts, toggleLike } = useFeedStore();
+    const liked = useFeedStore(s => s.posts.find(p => p.id === post.id)?.liked ?? post.liked);
+    const toggleLike = useFeedStore(s => s.toggleLike);
 
-    const currentPost = posts.find(p => p.id === post.id);
-    const liked = currentPost?.liked ?? post.liked;
+    const handleDoubleTap = useCallback(() => {
+        if (!liked) toggleLike(post.id);
+    }, [liked, toggleLike, post.id]);
 
     if (!user) return null;
-
-    const handleDoubleTap = () => {
-        if (!liked) toggleLike(post.id);
-    };
 
     return (
         <ThemedView style={styles.feedMargin}>
@@ -49,12 +48,10 @@ function FeedPost({ post }: { post: Post }) {
             </ContentContainer>
         </ThemedView>
     );
-}
+});
 
 const styles = StyleSheet.create({
     feedMargin: {
         marginBottom: 20,
     },
 });
-
-export { FeedPost };
